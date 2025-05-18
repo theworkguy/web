@@ -5,8 +5,8 @@ import { Timer, AlertCircle } from 'lucide-react';
 const products = [
   {
     id: 1,
-    name: "Signed Baseball Bat",
-    description: "Exclusively signed by John Alite, limited to 100 bats.",
+    name: "John Alite Autographed Collector's Baseball Bat",
+    description: "Own a piece of history with this exclusive baseball bat, hand-signed by John Alite. Limited to just 100 units, this rare collectible is a must-have for fans and memorabilia enthusiasts. Each bat is uniquely authenticated, making it a one-of-a-kind treasure.",
     images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
     isPreSale: true,
