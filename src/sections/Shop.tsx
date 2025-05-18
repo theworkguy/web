@@ -17,7 +17,7 @@ const products = [
   {
     id: 2,
     name: "John Alite Exclusive Journey T-Shirt",
-    description: "elebrate John Alite's remarkable story with this limited-edition T-shirt, featuring a striking design from his personal collection. Only 50 shirts available, making this a rare and bold statement piece for true fans.",
+    description: "Celebrate John Alite's remarkable story with this limited-edition T-shirt, featuring a striking design from his personal collection. Only 50 shirts available, making this a rare and bold statement piece for true fans.",
     images: [
       "https://i.postimg.cc/hG2N5Z40/Se-Shpejti-ne-storm-al-Limited-Edition-JA.jpg",
       "https://i.postimg.cc/qRgWVczH/Se-Shpejti-ne-storm-al-Limited-Edition-JA-1.jpg",
