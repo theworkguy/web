@@ -7,7 +7,7 @@ const products = [
     id: 1,
     name: "Signed Baseball Bat",
     description: "Exclusively signed by John Alite, limited to 100 bats.",
-    images: ["https://nypost.com/wp-content/uploads/sites/2/2023/11/john-alite-regular-price-200-72488159.jpg"],
+    images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
     isPreSale: true,
     shippingDate: "June 15, 2025",
