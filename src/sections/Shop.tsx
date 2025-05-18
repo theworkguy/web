@@ -5,8 +5,8 @@ import { Timer, AlertCircle } from 'lucide-react';
 const products = [
   {
     id: 1,
-    name: "Authentic Signed Baseball Bat",
-    description: "A rare collector's item: a baseball bat personally signed by John Alite. Limited to only 100 units, each bat is a unique piece of memorabilia.",
+    name: "Signed Baseball Bat",
+    description: "Exclusively signed by John Alite, limited to 100 bats.",
     images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
     isPreSale: true,
@@ -191,13 +191,13 @@ const Shop: React.FC = () => {
                       onClick={() => handlePrevImage(product.id, product.images.length)}
                       className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
-                      <
+                      &lt;
                     </button>
                     <button
                       onClick={() => handleNextImage(product.id, product.images.length)}
                       className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
-                      >
+                      &gt;
                     </button>
                   </>
                 )}
