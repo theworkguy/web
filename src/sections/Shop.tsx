@@ -23,7 +23,7 @@ const products = [
       "https://i.postimg.cc/qRgWVczH/Se-Shpejti-ne-storm-al-Limited-Edition-JA-1.jpg",
       "https://i.postimg.cc/KzVwZKMk/Se-Shpejti-ne-storm-al-Limited-Edition-JA-2.jpg",
     ],
-    price: 29.99,
+    price: 89,
   },
 ];
 
