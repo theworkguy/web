@@ -60,7 +60,7 @@ const Shop: React.FC = () => {
 
     function ShopifyBuyInit() {
       const client = window.ShopifyBuy.buildClient({
-        domain: 'shop.johnalite.com',
+        domain: 'eh5xnw-dz.myshopify.com',
         storefrontAccessToken: '76db49885482b81e731595751318b611',
       });
 
@@ -74,20 +74,27 @@ const Shop: React.FC = () => {
               styles: {
                 product: {
                   "@media (min-width: 601px)": {
-                    "max-width": "calc(25% - 20px)",
-                    "margin-left": "20px",
-                    "margin-bottom": "50px"
+                    "max-width": "100%",
+                    "margin": "0 auto"
                   }
                 },
                 button: {
-                  "font-family": "Open Sans, sans-serif",
+                  "font-family": "Inter, sans-serif",
+                  "font-weight": "600",
+                  "padding": "1rem 2rem",
+                  "border-radius": "0.5rem",
+                  "background-color": "#c10101",
                   ":hover": {
-                    "background-color": "#e60000"
+                    "background-color": "#e00000"
                   },
-                  "background-color": "#ff0000",
                   ":focus": {
-                    "background-color": "#e60000"
-                  }
+                    "background-color": "#8a0101"
+                  },
+                  "box-shadow": "0 0 15px rgba(193, 1, 1, 0.3)",
+                  "width": "100%",
+                  "max-width": "300px",
+                  "margin": "0 auto",
+                  "display": "block"
                 }
               },
               buttonDestination: "checkout",
@@ -97,7 +104,7 @@ const Shop: React.FC = () => {
                 price: false
               },
               text: {
-                button: "Buy now"
+                button: "Pre-Order Now"
               }
             }
           }
@@ -238,7 +245,9 @@ const Shop: React.FC = () => {
                   </div>
                 )}
                 
-                <div id="product-component-1747581132748"></div>
+                <div className="flex justify-center">
+                  <div id="product-component-1747581132748" className="w-full max-w-md"></div>
+                </div>
               </div>
             </div>
           ))}
