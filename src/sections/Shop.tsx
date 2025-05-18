@@ -10,7 +10,7 @@ const products = [
     images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
     isPreSale: true,
-    shippingDate: "June 15, 2025",
+    shippingDate: "June 21, 2025",
     limitedQuantity: 100,
     remainingQuantity: 30,
   },
