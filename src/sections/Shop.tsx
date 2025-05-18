@@ -60,7 +60,7 @@ const Shop: React.FC = () => {
 
     function ShopifyBuyInit() {
       const client = window.ShopifyBuy.buildClient({
-        domain: 'eh5xnw-dz.myshopify.com',
+        domain: 'shop.johnalite.com',
         storefrontAccessToken: '76db49885482b81e731595751318b611',
       });
 
