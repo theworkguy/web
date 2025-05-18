@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import SectionTitle from '../components/SectionTitle';
-import Button from '../components/Button';
 import { Timer, AlertCircle } from 'lucide-react';
 
 const products = [
@@ -44,6 +43,68 @@ const Shop: React.FC = () => {
   });
 
   useEffect(() => {
+    // Load Shopify Buy Button SDK
+    const scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        }
+      }
+    };
+
+    function ShopifyBuyInit() {
+      const client = window.ShopifyBuy.buildClient({
+        domain: 'eh5xnw-dz.myshopify.com',
+        storefrontAccessToken: '76db49885482b81e731595751318b611',
+      });
+
+      window.ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', {
+          id: '9950544265504',
+          node: document.getElementById('product-component-1747581132748'),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {
+            product: {
+              styles: {
+                product: {
+                  "@media (min-width: 601px)": {
+                    "max-width": "calc(25% - 20px)",
+                    "margin-left": "20px",
+                    "margin-bottom": "50px"
+                  }
+                },
+                button: {
+                  "font-family": "Open Sans, sans-serif",
+                  ":hover": {
+                    "background-color": "#e60000"
+                  },
+                  "background-color": "#ff0000",
+                  ":focus": {
+                    "background-color": "#e60000"
+                  }
+                }
+              },
+              buttonDestination: "checkout",
+              contents: {
+                img: false,
+                title: false,
+                price: false
+              },
+              text: {
+                button: "Buy now"
+              }
+            }
+          }
+        });
+      });
+    }
+
     const calculateTimeLeft = () => {
       const shipDate = new Date('June 15, 2025');
       const now = new Date();
@@ -62,7 +123,11 @@ const Shop: React.FC = () => {
     const timer = setInterval(calculateTimeLeft, 1000);
     calculateTimeLeft();
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      // Cleanup script
+      document.body.removeChild(script);
+    };
   }, []);
 
   const handlePrevImage = (productId, imageCount) => {
@@ -173,15 +238,7 @@ const Shop: React.FC = () => {
                   </div>
                 )}
                 
-                <Button 
-                  variant="primary" 
-                  className="w-full group overflow-hidden relative"
-                >
-                  <span className="relative z-10 group-hover:animate-pulse">
-                    {product.isPreSale ? 'Pre-Order Now' : 'Add to Cart'}
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary to-primary-dark bg-[length:200%_100%] group-hover:animate-[gradient_2s_ease-in-out_infinite]"></div>
-                </Button>
+                <div id="product-component-1747581132748"></div>
               </div>
             </div>
           ))}
