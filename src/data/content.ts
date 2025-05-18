@@ -93,10 +93,10 @@ export const mediaItems: MediaItem[] = [
 export const products: Product[] = [
   {
     id: 1,
-    name: "Signed Baseball Bat",
+    name: "John Alite Autographed Collector's Baseball Bat",
     image: "https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=600",
-    price: 199.99,
-    description: "A piece of my past, now for a good cause. Each bat is personally signed and comes with a certificate of authenticity and custom display case.",
+    price: 185,
+    description: "Own a piece of history with this exclusive baseball bat, hand-signed by John Alite. Limited to just 100 units, this rare collectible is a must-have for fans and memorabilia enthusiasts. Each bat is uniquely authenticated, making it a one-of-a-kind treasure.",
   },
   {
     id: 2,
