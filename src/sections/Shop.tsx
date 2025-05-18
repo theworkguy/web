@@ -24,6 +24,10 @@ const products = [
       "https://i.postimg.cc/KzVwZKMk/Se-Shpejti-ne-storm-al-Limited-Edition-JA-2.jpg",
     ],
     price: 89,
+    isPreSale: true,
+    shippingDate: "June 21, 2025",
+    limitedQuantity: 50,
+    remainingQuantity: 25,
   },
 ];
 
@@ -60,10 +64,11 @@ const Shop: React.FC = () => {
 
     function ShopifyBuyInit() {
       const client = window.ShopifyBuy.buildClient({
-        domain: 'shop.johnalite.com',
+        domain: 'eh5xnw-dz.myshopify.com',
         storefrontAccessToken: '76db49885482b81e731595751318b611',
       });
 
+      // Initialize Baseball Bat button
       window.ShopifyBuy.UI.onReady(client).then(function (ui) {
         ui.createComponent('product', {
           id: '9950544265504',
@@ -109,11 +114,57 @@ const Shop: React.FC = () => {
             }
           }
         });
+
+        // Initialize T-shirt button
+        ui.createComponent('product', {
+          id: '9950602527008',
+          node: document.getElementById('product-component-1747588187589'),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {
+            product: {
+              styles: {
+                product: {
+                  "@media (min-width: 601px)": {
+                    "max-width": "100%",
+                    "margin": "0 auto"
+                  }
+                },
+                button: {
+                  "font-family": "Inter, sans-serif",
+                  "font-weight": "600",
+                  "padding": "1rem 2rem",
+                  "border-radius": "0.5rem",
+                  "background-color": "#c10101",
+                  ":hover": {
+                    "background-color": "#e00000"
+                  },
+                  ":focus": {
+                    "background-color": "#8a0101"
+                  },
+                  "box-shadow": "0 0 15px rgba(193, 1, 1, 0.3)",
+                  "width": "100%",
+                  "max-width": "300px",
+                  "margin": "0 auto",
+                  "display": "block"
+                }
+              },
+              buttonDestination: "checkout",
+              contents: {
+                img: false,
+                title: false,
+                price: false
+              },
+              text: {
+                button: "Pre-Order Now"
+              }
+            }
+          }
+        });
       });
     }
 
     const calculateTimeLeft = () => {
-      const shipDate = new Date('June 15, 2025');
+      const shipDate = new Date('June 21, 2025');
       const now = new Date();
       const difference = shipDate.getTime() - now.getTime();
 
@@ -246,7 +297,11 @@ const Shop: React.FC = () => {
                 )}
                 
                 <div className="flex justify-center">
-                  <div id="product-component-1747581132748" className="w-full max-w-md"></div>
+                  {product.id === 1 ? (
+                    <div id="product-component-1747581132748" className="w-full max-w-md"></div>
+                  ) : (
+                    <div id="product-component-1747588187589" className="w-full max-w-md"></div>
+                  )}
                 </div>
               </div>
             </div>
