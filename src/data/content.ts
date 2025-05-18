@@ -94,7 +94,7 @@ export const products: Product[] = [
   {
     id: 1,
     name: "Signed Baseball Bat",
-    image: "https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg",
+    image: "https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=600",
     price: 199.99,
     description: "A piece of my past, now for a good cause. Each bat is personally signed and comes with a certificate of authenticity and custom display case.",
   },
