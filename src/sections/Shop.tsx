@@ -362,6 +362,14 @@ const Shop: React.FC = () => {
               <p className="text-gray-500 text-xs">- Sarah T.</p>
             </div>
           </div>
+          <div className="text-center mt-6">
+            <a 
+              href="#reviews" 
+              className="text-primary hover:text-primary-hover font-semibold transition-colors duration-300"
+            >
+              📖 Read All Reviews →
+            </a>
+          </div>
         </div>
         
         <div className="mt-8 text-center">
