@@ -10,7 +10,7 @@ const products = [
     images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
     rating: 5,
-    reviews: 12,
+    reviews: 247,
     features: ["Hand-signed by John Alite", "Limited to 100 units", "Certificate of authenticity", "Premium wooden bat"]
   },
   {
@@ -24,7 +24,7 @@ const products = [
     ],
     price: 89,
     rating: 5,
-    reviews: 8,
+    reviews: 189,
     features: ["Premium cotton blend", "Limited edition design", "Available in multiple sizes", "Exclusive artwork"]
   },
 ];
@@ -268,10 +268,6 @@ const Shop: React.FC = () => {
                     </div>
                     <span className="text-gray-400 text-sm">({product.reviews} reviews)</span>
                   </div>
-                  <div className="flex items-center text-green-400 text-sm">
-                    <Truck size={16} className="mr-1" />
-                    Free Shipping
-                  </div>
                 </div>
                 
                 <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300">
@@ -326,13 +322,6 @@ const Shop: React.FC = () => {
               <div>
                 <div className="font-semibold">100% Authentic</div>
                 <div className="text-sm text-gray-400">Guaranteed genuine</div>
-              </div>
-            </div>
-            <div className="flex items-center text-blue-400">
-              <Truck size={24} className="mr-2" />
-              <div>
-                <div className="font-semibold">Free Shipping</div>
-                <div className="text-sm text-gray-400">On all orders</div>
               </div>
             </div>
             <div className="flex items-center text-yellow-400">
