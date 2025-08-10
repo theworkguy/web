@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SectionTitle from '../components/SectionTitle';
-import { Timer, AlertCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Truck, Shield } from 'lucide-react';
 
 const products = [
   {
@@ -9,10 +9,9 @@ const products = [
     description: "Own a piece of history with this exclusive baseball bat, hand-signed by John Alite. Limited to just 100 units, this rare collectible is a must-have for fans and memorabilia enthusiasts. Each bat is uniquely authenticated, making it a one-of-a-kind treasure.",
     images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
-    isPreSale: true,
-    shippingDate: "June 21, 2025",
-    limitedQuantity: 100,
-    remainingQuantity: 30,
+    rating: 5,
+    reviews: 12,
+    features: ["Hand-signed by John Alite", "Limited to 100 units", "Certificate of authenticity", "Premium wooden bat"]
   },
   {
     id: 2,
@@ -24,10 +23,9 @@ const products = [
       "https://i.postimg.cc/KzVwZKMk/Se-Shpejti-ne-storm-al-Limited-Edition-JA-2.jpg",
     ],
     price: 89,
-    isPreSale: true,
-    shippingDate: "June 21, 2025",
-    limitedQuantity: 50,
-    remainingQuantity: 25,
+    rating: 5,
+    reviews: 8,
+    features: ["Premium cotton blend", "Limited edition design", "Available in multiple sizes", "Exclusive artwork"]
   },
 ];
 
@@ -38,13 +36,6 @@ const Shop: React.FC = () => {
       return acc;
     }, {})
   );
-
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
 
   useEffect(() => {
     // Load Shopify Buy Button SDK
@@ -99,7 +90,8 @@ const Shop: React.FC = () => {
                   "width": "100%",
                   "max-width": "300px",
                   "margin": "0 auto",
-                  "display": "block"
+                  "display": "block",
+                  "transition": "all 0.3s ease"
                 }
               },
               buttonDestination: "checkout",
@@ -109,7 +101,7 @@ const Shop: React.FC = () => {
                 price: false
               },
               text: {
-                button: "Pre-Order Now"
+                button: "Buy Now"
               }
             }
           }
@@ -145,7 +137,8 @@ const Shop: React.FC = () => {
                   "width": "100%",
                   "max-width": "300px",
                   "margin": "0 auto",
-                  "display": "block"
+                  "display": "block",
+                  "transition": "all 0.3s ease"
                 }
               },
               buttonDestination: "checkout",
@@ -155,7 +148,7 @@ const Shop: React.FC = () => {
                 price: false
               },
               text: {
-                button: "Pre-Order Now"
+                button: "Buy Now"
               }
             }
           }
@@ -163,28 +156,11 @@ const Shop: React.FC = () => {
       });
     }
 
-    const calculateTimeLeft = () => {
-      const shipDate = new Date('June 21, 2025');
-      const now = new Date();
-      const difference = shipDate.getTime() - now.getTime();
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
-      }
-    };
-
-    const timer = setInterval(calculateTimeLeft, 1000);
-    calculateTimeLeft();
-
     return () => {
-      clearInterval(timer);
       // Cleanup script
-      document.body.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
@@ -202,6 +178,16 @@ const Shop: React.FC = () => {
     }));
   };
 
+  const renderStars = (rating) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        size={16}
+        className={`${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-400'}`}
+      />
+    ));
+  };
+
   return (
     <section id="shop" className="section bg-dark-gray metal-texture relative">
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent pointer-events-none"></div>
@@ -212,89 +198,101 @@ const Shop: React.FC = () => {
           subtitle="Exclusive merchandise and collectibles from John's personal collection."
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {products.map((product) => (
             <div 
               key={product.id} 
-              className={`card group hover:shadow-red-glow transition-all duration-300 bg-gradient-to-br from-dark-gray to-black relative overflow-hidden ${
-                product.isPreSale ? 'md:col-span-2' : ''
-              }`}
+              className="card group hover:shadow-red-glow transition-all duration-300 bg-gradient-to-br from-dark-gray to-black relative overflow-hidden"
             >
-              {product.isPreSale && (
-                <div className="absolute top-4 left-4 z-10">
-                  <div className="bg-primary text-white px-4 py-2 rounded-full font-bold flex items-center gap-2 animate-pulse">
-                    <AlertCircle size={18} />
-                    PRE-SALE
-                  </div>
+              <div className="absolute top-4 left-4 z-10">
+                <div className="bg-primary text-white px-3 py-1 rounded-full font-bold text-sm flex items-center gap-1">
+                  <Shield size={14} />
+                  AUTHENTIC
                 </div>
-              )}
+              </div>
               
-              <div className="relative aspect-square md:aspect-video overflow-hidden">
+              <div className="relative aspect-square overflow-hidden">
                 <img 
                   src={product.images[currentImageIndices[product.id]]} 
                   alt={`${product.name} image ${currentImageIndices[product.id] + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-60"></div>
+                
                 {product.images.length > 1 && (
                   <>
                     <button
                       onClick={() => handlePrevImage(product.id, product.images.length)}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+                      aria-label="Previous image"
                     >
-                      &lt;
+                      <ChevronLeft size={20} />
                     </button>
                     <button
                       onClick={() => handleNextImage(product.id, product.images.length)}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+                      aria-label="Next image"
                     >
-                      &gt;
+                      <ChevronRight size={20} />
                     </button>
                   </>
                 )}
-                <div className="absolute top-4 right-4 bg-primary/90 text-white px-3 py-1 rounded-full font-bold">
+                
+                <div className="absolute top-4 right-4 bg-primary/90 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg">
                   ${product.price.toFixed(2)}
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                <p className="text-gray-400 mb-4">{product.description}</p>
                 
-                {product.isPreSale && (
-                  <div className="mb-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2 text-primary">
-                        <Timer size={18} />
-                        <span className="font-semibold">Limited Pre-Sale</span>
-                      </div>
-                      <div className="text-primary font-bold animate-pulse">
-                        Only {product.remainingQuantity} left!
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-4 gap-2 mb-3">
-                      <div className="text-center p-2 bg-black/30 rounded">
-                        <div className="text-2xl font-bold text-primary">{timeLeft.days}</div>
-                        <div className="text-xs text-gray-400">Days</div>
-                      </div>
-                      <div className="text-center p-2 bg-black/30 rounded">
-                        <div className="text-2xl font-bold text-primary">{timeLeft.hours}</div>
-                        <div className="text-xs text-gray-400">Hours</div>
-                      </div>
-                      <div className="text-center p-2 bg-black/30 rounded">
-                        <div className="text-2xl font-bold text-primary">{timeLeft.minutes}</div>
-                        <div className="text-xs text-gray-400">Mins</div>
-                      </div>
-                      <div className="text-center p-2 bg-black/30 rounded">
-                        <div className="text-2xl font-bold text-primary">{timeLeft.seconds}</div>
-                        <div className="text-xs text-gray-400">Secs</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between text-sm text-gray-400">
-                      <span>Ships on {product.shippingDate}</span>
-                      <span className="text-primary font-semibold">{Math.round((product.remainingQuantity / product.limitedQuantity) * 100)}% remaining</span>
-                    </div>
+                {product.images.length > 1 && (
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {product.images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndices(prev => ({ ...prev, [product.id]: index }))}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentImageIndices[product.id] 
+                            ? 'bg-primary scale-125' 
+                            : 'bg-white/50 hover:bg-white/80'
+                        }`}
+                        aria-label={`View image ${index + 1}`}
+                      />
+                    ))}
                   </div>
                 )}
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex items-center">
+                      {renderStars(product.rating)}
+                    </div>
+                    <span className="text-gray-400 text-sm">({product.reviews} reviews)</span>
+                  </div>
+                  <div className="flex items-center text-green-400 text-sm">
+                    <Truck size={16} className="mr-1" />
+                    Free Shipping
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300">
+                  {product.name}
+                </h3>
+                
+                <p className="text-gray-400 mb-4 leading-relaxed">
+                  {product.description}
+                </p>
+                
+                <div className="mb-6">
+                  <h4 className="text-sm font-semibold text-primary mb-2">Key Features:</h4>
+                  <ul className="space-y-1">
+                    {product.features.map((feature, index) => (
+                      <li key={index} className="text-gray-300 text-sm flex items-center">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 
                 <div className="flex justify-center">
                   {product.id === 1 ? (
@@ -303,9 +301,48 @@ const Shop: React.FC = () => {
                     <div id="product-component-1747588187589" className="w-full max-w-md"></div>
                   )}
                 </div>
+                
+                <div className="mt-4 pt-4 border-t border-gray-700">
+                  <div className="flex items-center justify-center space-x-6 text-sm text-gray-400">
+                    <div className="flex items-center">
+                      <Shield size={16} className="mr-1 text-green-400" />
+                      Secure Payment
+                    </div>
+                    <div className="flex items-center">
+                      <Truck size={16} className="mr-1 text-blue-400" />
+                      Fast Delivery
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center justify-center space-x-8 p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+            <div className="flex items-center text-green-400">
+              <Shield size={24} className="mr-2" />
+              <div>
+                <div className="font-semibold">100% Authentic</div>
+                <div className="text-sm text-gray-400">Guaranteed genuine</div>
+              </div>
+            </div>
+            <div className="flex items-center text-blue-400">
+              <Truck size={24} className="mr-2" />
+              <div>
+                <div className="font-semibold">Free Shipping</div>
+                <div className="text-sm text-gray-400">On all orders</div>
+              </div>
+            </div>
+            <div className="flex items-center text-yellow-400">
+              <Star size={24} className="mr-2" />
+              <div>
+                <div className="font-semibold">5-Star Rated</div>
+                <div className="text-sm text-gray-400">Customer approved</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
