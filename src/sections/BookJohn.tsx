@@ -149,7 +149,7 @@ const BookJohn: React.FC = () => {
             </div>
             
             <Button type="submit" variant="primary" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Submitting...' : 'Submit Request'}
+              {isLoading ? 'Submitting...' : '🎤 BOOK NOW - GET INSTANT QUOTE'}
             </Button>
             
             {status && (

@@ -105,6 +105,26 @@ const About: React.FC = () => {
           alignment="left"
         />
         
+        {/* Quick Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="text-center bg-black/30 p-4 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-primary">14</div>
+            <div className="text-sm text-gray-400">Years in Prison</div>
+          </div>
+          <div className="text-center bg-black/30 p-4 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-primary">5</div>
+            <div className="text-sm text-gray-400">Bestselling Books</div>
+          </div>
+          <div className="text-center bg-black/30 p-4 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-primary">500K+</div>
+            <div className="text-sm text-gray-400">Social Followers</div>
+          </div>
+          <div className="text-center bg-black/30 p-4 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-primary">2025</div>
+            <div className="text-sm text-gray-400">Elected Councilman</div>
+          </div>
+        </div>
+        
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
             <p className="text-gray-300 mb-6">

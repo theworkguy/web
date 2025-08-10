@@ -126,4 +126,30 @@
   .shadow-red-glow {
     box-shadow: 0 0 15px rgba(193, 1, 1, 0.3);
   }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .container {
+      @apply px-3;
+    }
+    
+    .section {
+      @apply py-12;
+    }
+    
+    h1 {
+      @apply text-3xl;
+    }
+    
+    h2 {
+      @apply text-2xl;
+    }
+  }
+  
+  /* Enhanced animations for mobile */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-bounce-slow {
+      animation: bounce 2s infinite;
+    }
+  }
 }

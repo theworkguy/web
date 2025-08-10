@@ -101,7 +101,7 @@ const Shop: React.FC = () => {
                 price: false
               },
               text: {
-                button: "Buy Now"
+                button: "🛒 BUY NOW - LIMITED TIME!"
               }
             }
           }
@@ -148,7 +148,7 @@ const Shop: React.FC = () => {
                 price: false
               },
               text: {
-                button: "Buy Now"
+                button: "🛒 BUY NOW - BESTSELLER!"
               }
             }
           }

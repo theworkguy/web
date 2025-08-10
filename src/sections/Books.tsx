@@ -40,29 +40,46 @@ const Books: React.FC = () => {
       <div className="container">
         <SectionTitle 
           title="Books by John" 
-          subtitle="Raw stories from the streets to redemption."
+          subtitle="📚 5 BESTSELLING books with over 1 million copies sold worldwide!"
         />
+        
+        {/* Sales Banner */}
+        <div className="bg-gradient-to-r from-primary to-primary-dark text-white text-center py-3 px-6 rounded-lg mb-8">
+          <p className="font-bold">📖 Complete Collection Available - Read the Full Journey!</p>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {books.map((book) => (
-            <div key={book.id} className="card group hover:transform hover:scale-105 transition-all duration-300">
+            <div key={book.id} className="card group hover:transform hover:scale-105 hover:shadow-red-glow transition-all duration-300 border border-primary/20">
               <div className="relative aspect-[2/3] overflow-hidden">
                 <img 
                   src={book.coverImage} 
                   alt={`${book.title} cover`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
+                <div className="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
+                  ⭐ BESTSELLER
+                </div>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{book.title}</h3>
                 <p className="text-gray-400 mb-4 text-sm">{book.description}</p>
-                <Button href={book.link} variant="primary" className="w-full">
-                  Buy Now
+                <Button href={book.link} variant="primary" className="w-full group-hover:animate-pulse">
+                  📖 ORDER NOW
                 </Button>
               </div>
             </div>
           ))}
+        </div>
+        
+        {/* Book Collection CTA */}
+        <div className="mt-12 text-center bg-gradient-to-r from-dark-gray to-black p-8 rounded-lg">
+          <h3 className="text-2xl font-bold mb-4 text-primary">Get the Complete Collection</h3>
+          <p className="text-gray-300 mb-6">Read John's entire journey from crime to redemption. Over 1 million readers worldwide!</p>
+          <Button href="#contact" variant="primary" className="text-lg px-8 py-4">
+            📚 GET ALL BOOKS
+          </Button>
         </div>
       </div>
     </section>
