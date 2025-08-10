@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SectionTitle from '../components/SectionTitle';
-import { ChevronLeft, ChevronRight, Star, Truck, Shield } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Truck, Shield, Award } from 'lucide-react';
 
 const products = [
   {
