@@ -283,7 +283,12 @@ const Shop: React.FC = () => {
                     <div className="flex items-center">
                       {renderStars(product.rating)}
                     </div>
-                    <span className="text-yellow-400 font-bold text-sm md:text-base">({product.reviews.toLocaleString()} reviews)</span>
+                    <a 
+                      href="#reviews" 
+                      className="text-yellow-400 hover:text-yellow-300 font-bold text-sm md:text-base transition-colors duration-300"
+                    >
+                      ({product.reviews.toLocaleString()} reviews)
+                    </a>
                   </div>
                 </div>
                 
