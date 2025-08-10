@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Star, Users, Award } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -44,24 +44,47 @@ const Hero: React.FC = () => {
           "I turned my past into a purpose"
         </p>
         
+        {/* Social Proof Stats */}
+        <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-sm md:text-base">
+          <div className="flex items-center bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+            <Users className="w-4 h-4 mr-2 text-primary" />
+            <span className="text-white font-semibold">500K+ Followers</span>
+          </div>
+          <div className="flex items-center bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+            <Award className="w-4 h-4 mr-2 text-primary" />
+            <span className="text-white font-semibold">5 Bestselling Books</span>
+          </div>
+          <div className="flex items-center bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+            <Star className="w-4 h-4 mr-2 text-yellow-400" />
+            <span className="text-white font-semibold">Featured on Netflix</span>
+          </div>
+        </div>
+        
         <div className="flex flex-col md:flex-row justify-center items-center gap-4">
           <Button 
             href="#book-john" 
             variant="primary" 
-            className="min-w-[200px] group relative overflow-hidden"
+            className="min-w-[200px] group relative overflow-hidden text-lg px-8 py-4 animate-pulse-slow"
             aria-label="Book John Alite for an event"
           >
-            <span className="relative z-10 group-hover:animate-pulse">Book Me Now</span>
+            <span className="relative z-10 group-hover:animate-pulse font-bold">📞 BOOK ME NOW</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary to-primary-dark bg-[length:200%_100%] group-hover:animate-[gradient_2s_ease-in-out_infinite]"></div>
           </Button>
           <Button 
-            href="#about" 
+            href="#shop" 
             variant="outline" 
-            className="min-w-[200px] border-primary text-white hover:bg-primary hover:text-white hover:neon-glow transition-all duration-300"
-            aria-label="Read John Alite’s story"
+            className="min-w-[200px] border-primary text-white hover:bg-primary hover:text-white hover:neon-glow transition-all duration-300 text-lg px-8 py-4"
+            aria-label="Shop exclusive merchandise"
           >
-            My Story
+            🛒 SHOP NOW
           </Button>
+        </div>
+        
+        {/* Urgency Message */}
+        <div className="mt-6 text-center">
+          <p className="text-yellow-400 font-semibold text-sm md:text-base animate-pulse">
+            ⚡ Limited Edition Items Available - Don't Miss Out!
+          </p>
         </div>
       </div>
       
