@@ -118,11 +118,11 @@ const generateReviews = (): Review[] => {
   let id = 1;
 
   // Generate reviews with realistic distribution
-  const totalReviews = 3000;
+  const totalReviews = 3132;
   const batCount = 1247;
-  const tshirtCount = 892;
-  const bookCount = 650;
-  const speakingCount = 211;
+  const tshirtCount = 924;
+  const bookCount = 682;
+  const speakingCount = 279;
 
   // Generate bat reviews
   for (let i = 0; i < batCount; i++) {
