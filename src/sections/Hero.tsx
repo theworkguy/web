@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-sm md:text-base">
           <div className="flex items-center bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
             <Users className="w-4 h-4 mr-2 text-primary" />
-            <span className="text-white font-semibold">500K+ Followers</span>
+            <span className="text-white font-semibold">1.5M+ Followers</span>
           </div>
           <div className="flex items-center bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
             <Award className="w-4 h-4 mr-2 text-primary" />
