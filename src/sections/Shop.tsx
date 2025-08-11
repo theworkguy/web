@@ -37,6 +37,14 @@ const Shop: React.FC = () => {
     }, {})
   );
   const [urgencyTimer, setUrgencyTimer] = useState(3600); // 1 hour countdown
+  const [soldToday] = useState({
+    1: Math.floor(Math.random() * 10) + 5, // Baseball bat: 5-14 sold today
+    2: Math.floor(Math.random() * 15) + 8  // T-shirt: 8-22 sold today
+  });
+  const [viewingNow] = useState({
+    1: Math.floor(Math.random() * 30) + 15, // Baseball bat: 15-44 viewing now
+    2: Math.floor(Math.random() * 40) + 20  // T-shirt: 20-59 viewing now
+  });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -356,11 +364,11 @@ const Shop: React.FC = () => {
                     <div className="flex items-center justify-center gap-4 text-sm">
                       <div className="flex items-center gap-1">
                         <Users size={16} className="text-green-400" />
-                        <span className="text-green-400 font-bold">{Math.floor(Math.random() * 50) + 20} viewing now</span>
+                        <span className="text-green-400 font-bold">{viewingNow[product.id]} viewing now</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <TrendingUp size={16} className="text-orange-400" />
-                        <span className="text-orange-400 font-bold">{Math.floor(Math.random() * 10) + 5} sold today</span>
+                        <span className="text-orange-400 font-bold">{soldToday[product.id]} sold today</span>
                       </div>
                     </div>
                   </div>

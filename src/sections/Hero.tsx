@@ -4,13 +4,6 @@ import { ChevronDown, Star, Users, Award, TrendingUp, Shield, Zap } from 'lucide
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  const testimonials = [
-    { text: "John's story changed my life completely", author: "Michael R." },
-    { text: "Most powerful speaker I've ever heard", author: "Sarah T." },
-    { text: "His books are absolutely incredible", author: "David L." },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +12,6 @@ const Hero: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 3000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -56,15 +42,6 @@ const Hero: React.FC = () => {
       ></div>
 
       <div className="container px-4 z-10 text-center">
-        {/* Premium Badge */}
-        <div className="mb-6 flex justify-center">
-          <div className="premium-badge flex items-center gap-2">
-            <Award size={16} />
-            <span>OFFICIAL WEBSITE</span>
-            <Shield size={16} />
-          </div>
-        </div>
-
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight text-white leading-none">
           <span className="block mb-2 shimmer bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">JOHN</span> 
           <span className="text-primary neon-glow animate-pulse-slow text-7xl md:text-8xl lg:text-9xl">ALITE</span>
@@ -78,18 +55,8 @@ const Hero: React.FC = () => {
           "I turned my past into a purpose"
         </p>
 
-        {/* Rotating Testimonials */}
-        <div className="mb-8 h-16 flex items-center justify-center">
-          <div className="testimonial-card px-6 py-3 rounded-full max-w-md">
-            <p className="text-white font-medium transition-all duration-500">
-              "{testimonials[currentTestimonial].text}"
-            </p>
-            <p className="text-gold text-sm mt-1">- {testimonials[currentTestimonial].author}</p>
-          </div>
-        </div>
-        
         {/* Social Proof Stats */}
-        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 mb-10 text-sm md:text-base">
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 mb-10 text-sm md:text-base">
           <div className="flex items-center testimonial-card px-6 py-3 rounded-full">
             <Users className="w-5 h-5 mr-2 text-gold" />
             <span className="text-white font-bold">1.5M+ Followers</span>
@@ -108,25 +75,14 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Urgency Banner */}
-        <div className="urgency-banner text-white text-center py-4 px-6 rounded-2xl mb-8 shadow-2xl">
-          <div className="flex items-center justify-center gap-2">
-            <Zap className="w-5 h-5 animate-pulse" />
-            <p className="font-black text-lg md:text-xl">🔥 LIMITED TIME: Exclusive Items Available - Don't Miss Out!</p>
-            <Zap className="w-5 h-5 animate-pulse" />
-          </div>
-        </div>
-        
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
           <Button 
             href="#book-john" 
-            className="btn-gold min-w-[250px] group relative overflow-hidden text-xl px-10 py-5 animate-pulse-slow shadow-2xl"
+            className="btn-gold min-w-[250px] group relative overflow-hidden text-xl px-10 py-5 shadow-2xl"
             aria-label="Book John Alite for an event"
           >
-            <span className="relative z-10 group-hover:animate-pulse font-black flex items-center gap-2">
-              <Zap size={20} />
+            <span className="relative z-10 font-black flex items-center gap-2">
               BOOK ME NOW
-              <Zap size={20} />
             </span>
           </Button>
           <Button 
@@ -134,17 +90,15 @@ const Hero: React.FC = () => {
             className="btn-primary min-w-[250px] text-xl px-10 py-5 shadow-2xl"
             aria-label="Shop exclusive merchandise"
           >
-            <span className="flex items-center gap-2 font-black">
-              <Star size={20} />
+            <span className="font-black">
               SHOP NOW
-              <Star size={20} />
             </span>
           </Button>
         </div>
         
         {/* Trust Indicators */}
         <div className="mt-12 text-center">
-          <p className="text-gold font-bold text-lg md:text-xl animate-pulse mb-4">
+          <p className="text-gold font-bold text-lg md:text-xl mb-4">
             ✅ 100% Authentic • 🚚 Fast Shipping • 🔒 Secure Checkout
           </p>
           <p className="text-gray-400 text-sm">
