@@ -364,7 +364,6 @@ const Shop: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  </p>
                 </div>
                 
                 <div className="flex justify-center">
