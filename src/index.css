@@ -101,7 +101,7 @@
   }
 
   .btn-outline {
-    @apply border-3 border-primary hover:bg-primary/20 text-primary;
+    @apply border-4 border-primary hover:bg-primary/20 text-primary;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(193, 1, 1, 0.3);
   }
