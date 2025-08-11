@@ -210,19 +210,54 @@
   /* Mobile optimizations */
   @media (max-width: 768px) {
     .container {
+      @apply px-4;
+    }
+    
+    .section {
+      @apply py-8;
+    }
+    
+    h1 {
+      @apply text-4xl;
+    }
+    
+    h2 {
+      @apply text-xl;
+    }
+    
+    .card {
+      @apply rounded-xl;
+    }
+    
+    .btn {
+      @apply py-3 px-6 text-base;
+    }
+    
+    .form-input {
+      @apply p-3 text-base;
+    }
+  }
+  
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    .container {
       @apply px-3;
     }
     
     .section {
-      @apply py-12;
+      @apply py-6;
     }
     
     h1 {
       @apply text-3xl;
     }
     
-    h2 {
-      @apply text-2xl;
+    .btn {
+      @apply py-3 px-4 text-sm;
+    }
+    
+    .premium-badge {
+      @apply text-xs px-2 py-1;
     }
   }
   

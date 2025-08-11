@@ -4,6 +4,17 @@ import { ChevronDown, Star, Users, Award, TrendingUp, Shield, Zap } from 'lucide
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,43 +53,43 @@ const Hero: React.FC = () => {
       ></div>
 
       <div className="container px-4 z-10 text-center">
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight text-white leading-none">
-          <span className="block mb-2 shimmer bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">JOHN</span> 
-          <span className="text-primary neon-glow animate-pulse-slow text-7xl md:text-8xl lg:text-9xl">ALITE</span>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 md:mb-6 tracking-tight text-white leading-tight">
+          <span className="block mb-1 md:mb-2 shimmer bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">JOHN</span> 
+          <span className="text-primary neon-glow animate-pulse-slow text-5xl sm:text-6xl md:text-8xl lg:text-9xl">ALITE</span>
         </h1>
         
-        <p className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-gray-200 max-w-4xl mx-auto leading-tight">
+        <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-200 max-w-4xl mx-auto leading-tight px-2">
           From <span className="text-primary neon-glow">Mob Enforcer</span> to <span className="text-gold gold-glow">Councilman</span> and <span className="text-primary neon-glow">Advocate</span>
         </p>
 
-        <p className="text-xl md:text-3xl italic text-gold gold-glow mb-8 max-w-3xl mx-auto font-light">
+        <p className="text-base sm:text-lg md:text-2xl lg:text-3xl italic text-gold gold-glow mb-6 md:mb-8 max-w-3xl mx-auto font-light px-2">
           "I turned my past into a purpose"
         </p>
 
         {/* Social Proof Stats */}
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 mb-10 text-sm md:text-base">
-          <div className="flex items-center testimonial-card px-6 py-3 rounded-full">
-            <Users className="w-5 h-5 mr-2 text-gold" />
-            <span className="text-white font-bold">1.5M+ Followers</span>
+        <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-3 md:gap-6 mb-8 md:mb-10 text-xs sm:text-sm md:text-base px-2">
+          <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
+            <Users className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-gold" />
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">1.5M+ Followers</span>
           </div>
-          <div className="flex items-center testimonial-card px-6 py-3 rounded-full">
-            <Award className="w-5 h-5 mr-2 text-gold" />
-            <span className="text-white font-bold">5 Bestselling Books</span>
+          <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
+            <Award className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-gold" />
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">5 Bestselling Books</span>
           </div>
-          <div className="flex items-center testimonial-card px-6 py-3 rounded-full">
-            <Star className="w-5 h-5 mr-2 text-yellow-400" />
-            <span className="text-white font-bold">Featured on Netflix</span>
+          <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
+            <Star className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-yellow-400" />
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">Featured on Netflix</span>
           </div>
-          <div className="flex items-center testimonial-card px-6 py-3 rounded-full">
-            <TrendingUp className="w-5 h-5 mr-2 text-green-400" />
-            <span className="text-white font-bold">3,132 Reviews</span>
+          <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
+            <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-green-400" />
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">3,132 Reviews</span>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 px-4">
           <Button 
             href="#book-john" 
-            className="btn-gold min-w-[250px] group relative overflow-hidden text-xl px-10 py-5 shadow-2xl"
+            className="btn-gold w-full sm:w-auto sm:min-w-[200px] md:min-w-[250px] group relative overflow-hidden text-lg md:text-xl px-6 md:px-10 py-4 md:py-5 shadow-2xl"
             aria-label="Book John Alite for an event"
           >
             <span className="relative z-10 font-black flex items-center gap-2">
@@ -87,7 +98,7 @@ const Hero: React.FC = () => {
           </Button>
           <Button 
             href="#shop" 
-            className="btn-primary min-w-[250px] text-xl px-10 py-5 shadow-2xl"
+            className="btn-primary w-full sm:w-auto sm:min-w-[200px] md:min-w-[250px] text-lg md:text-xl px-6 md:px-10 py-4 md:py-5 shadow-2xl"
             aria-label="Shop exclusive merchandise"
           >
             <span className="font-black">
@@ -98,10 +109,10 @@ const Hero: React.FC = () => {
         
         {/* Trust Indicators */}
         <div className="mt-12 text-center">
-          <p className="text-gold font-bold text-lg md:text-xl mb-4">
+          <p className="text-gold font-bold text-sm sm:text-base md:text-lg lg:text-xl mb-4 px-2">
             ✅ 100% Authentic • 🚚 Fast Shipping • 🔒 Secure Checkout
           </p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-xs sm:text-sm px-2">
             Join thousands of satisfied customers worldwide
           </p>
         </div>

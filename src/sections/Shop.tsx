@@ -227,56 +227,59 @@ const Shop: React.FC = () => {
         />
         
         {/* Enhanced Urgency Banner with Timer */}
-        <div className="urgency-banner text-white text-center py-6 px-8 rounded-2xl mb-12 shadow-2xl">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="urgency-banner text-white text-center py-4 md:py-6 px-4 md:px-8 rounded-2xl mb-8 md:mb-12 shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
             <div className="flex items-center gap-2">
-              <Zap className="w-6 h-6 animate-pulse" />
-              <p className="font-black text-xl">🔥 FLASH SALE ENDS IN:</p>
+              <Zap className="w-4 h-4 md:w-6 md:h-6 animate-pulse" />
+              <p className="font-black text-sm md:text-xl">🔥 FLASH SALE ENDS IN:</p>
             </div>
-            <div className="bg-black/50 px-6 py-2 rounded-xl">
-              <p className="font-mono text-2xl font-black text-gold">{formatTime(urgencyTimer)}</p>
+            <div className="bg-black/50 px-3 md:px-6 py-1 md:py-2 rounded-xl">
+              <p className="font-mono text-lg md:text-2xl font-black text-gold">{formatTime(urgencyTimer)}</p>
             </div>
             <div className="flex items-center gap-2">
-              <p className="font-black text-xl">DON'T MISS OUT!</p>
-              <Zap className="w-6 h-6 animate-pulse" />
+              <p className="font-black text-sm md:text-xl">DON'T MISS OUT!</p>
+              <Zap className="w-4 h-4 md:w-6 md:h-6 animate-pulse" />
             </div>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
           {products.map((product) => (
             <div 
               key={product.id} 
-              className="card group hover:shadow-2xl hover:scale-105 transition-all duration-500 bg-gradient-to-br from-dark-gray via-medium-gray to-black relative overflow-hidden border-2 border-gold/30"
+              className="card group hover:shadow-2xl md:hover:scale-105 transition-all duration-500 bg-gradient-to-br from-dark-gray via-medium-gray to-black relative overflow-hidden border-2 border-gold/30"
             >
-              <div className="absolute top-6 left-6 z-10 flex flex-col gap-3">
-                <div className="premium-badge flex items-center gap-2 animate-pulse">
-                  <Shield size={14} />
-                  <span>100% AUTHENTIC</span>
+              <div className="absolute top-3 md:top-6 left-3 md:left-6 z-10 flex flex-col gap-2 md:gap-3">
+                <div className="premium-badge flex items-center gap-1 md:gap-2 animate-pulse text-xs md:text-sm px-2 md:px-3 py-1">
+                  <Shield size={12} className="md:w-4 md:h-4" />
+                  <span className="hidden sm:inline">100% AUTHENTIC</span>
+                  <span className="sm:hidden">AUTHENTIC</span>
                 </div>
                 {product.id === 1 && (
-                  <div className="bg-red-600 text-white px-4 py-2 rounded-full font-black text-sm animate-pulse">
-                    🔥 ONLY 100 EXIST
+                  <div className="bg-red-600 text-white px-2 md:px-4 py-1 md:py-2 rounded-full font-black text-xs md:text-sm animate-pulse">
+                    <span className="hidden sm:inline">🔥 ONLY 100 EXIST</span>
+                    <span className="sm:hidden">🔥 LIMITED</span>
                   </div>
                 )}
                 {product.id === 2 && (
-                  <div className="bg-green-600 text-white px-4 py-2 rounded-full font-black text-sm animate-pulse">
-                    ⭐ #1 BESTSELLER
+                  <div className="bg-green-600 text-white px-2 md:px-4 py-1 md:py-2 rounded-full font-black text-xs md:text-sm animate-pulse">
+                    <span className="hidden sm:inline">⭐ #1 BESTSELLER</span>
+                    <span className="sm:hidden">⭐ BESTSELLER</span>
                   </div>
                 )}
               </div>
               
-              <div className="absolute top-6 right-6 z-10">
-                <div className="bg-gradient-to-r from-gold to-gold-dark text-black px-6 py-3 rounded-2xl font-black text-2xl shadow-2xl border-2 border-white/30">
+              <div className="absolute top-3 md:top-6 right-3 md:right-6 z-10">
+                <div className="bg-gradient-to-r from-gold to-gold-dark text-black px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl font-black text-lg md:text-2xl shadow-2xl border border-white/30 md:border-2">
                   ${product.price.toFixed(2)}
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-t-2xl">
+              <div className="relative aspect-square overflow-hidden rounded-t-xl md:rounded-t-2xl">
                 <img 
                   src={product.images[currentImageIndices[product.id]]} 
                   alt={`${product.name} image ${currentImageIndices[product.id] + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
+                  className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110 md:group-hover:brightness-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
                 
@@ -284,28 +287,28 @@ const Shop: React.FC = () => {
                   <>
                     <button
                       onClick={() => handlePrevImage(product.id, product.images.length)}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gold/90 hover:bg-gold text-black p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-xl"
+                      className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-gold/90 hover:bg-gold text-black p-2 md:p-3 rounded-full opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-xl touch-manipulation"
                       aria-label="Previous image"
                     >
-                      <ChevronLeft size={24} />
+                      <ChevronLeft size={16} className="md:w-6 md:h-6" />
                     </button>
                     <button
                       onClick={() => handleNextImage(product.id, product.images.length)}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gold/90 hover:bg-gold text-black p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-xl"
+                      className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-gold/90 hover:bg-gold text-black p-2 md:p-3 rounded-full opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-xl touch-manipulation"
                       aria-label="Next image"
                     >
-                      <ChevronRight size={24} />
+                      <ChevronRight size={16} className="md:w-6 md:h-6" />
                     </button>
                   </>
                 )}
                 
                 {product.images.length > 1 && (
-                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                  <div className="absolute bottom-3 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-3">
                     {product.images.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndices(prev => ({ ...prev, [product.id]: index }))}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 touch-manipulation ${
                           index === currentImageIndices[product.id] 
                             ? 'bg-gold scale-125 shadow-lg' 
                             : 'bg-white/50 hover:bg-white/80'
@@ -317,7 +320,7 @@ const Shop: React.FC = () => {
                 )}
               </div>
               
-              <div className="p-6 md:p-8">
+              <div className="p-4 md:p-6 lg:p-8">
                 <div className="flex items-center justify-center mb-4">
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center">
@@ -325,22 +328,22 @@ const Shop: React.FC = () => {
                     </div>
                     <a 
                       href="#reviews" 
-                      className="text-gold hover:text-gold-dark font-black text-base md:text-lg transition-colors duration-300"
+                      className="text-gold hover:text-gold-dark font-black text-sm md:text-base lg:text-lg transition-colors duration-300"
                     >
                       ({product.reviews.toLocaleString()} reviews)
                     </a>
                   </div>
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-black mb-4 text-white group-hover:text-gold transition-colors duration-300 text-center">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-black mb-3 md:mb-4 text-white md:group-hover:text-gold transition-colors duration-300 text-center leading-tight">
                   {product.name}
                 </h3>
                 
-                <p className="text-gray-300 mb-6 leading-relaxed text-base md:text-lg text-center font-medium">
+                <p className="text-gray-300 mb-4 md:mb-6 leading-relaxed text-sm md:text-base lg:text-lg text-center font-medium">
                   {product.description}
                 </p>
                 
-                <div className="mb-6 md:mb-8">
+                <div className="mb-4 md:mb-6 lg:mb-8">
                   <h4 className="text-lg font-black text-gold mb-4 text-center">✨ PREMIUM FEATURES:</h4>
                   <ul className="space-y-1">
                     {product.features.map((feature, index) => (
@@ -354,20 +357,20 @@ const Shop: React.FC = () => {
                 
                 {/* Urgency Message */}
                 <div className="text-center mb-6">
-                  <div className="bg-red-600/20 border border-red-500 rounded-xl p-4 mb-4">
+                  <div className="bg-red-600/20 border border-red-500 rounded-lg md:rounded-xl p-3 md:p-4 mb-4">
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <Clock className="w-5 h-5 text-red-400 animate-pulse" />
-                      <p className="text-red-400 font-black text-lg animate-pulse">
+                      <Clock className="w-4 h-4 md:w-5 md:h-5 text-red-400 animate-pulse" />
+                      <p className="text-red-400 font-black text-sm md:text-lg animate-pulse">
                         {product.id === 1 ? 'ONLY 100 UNITS EXIST!' : 'LIMITED TIME ONLY!'}
                       </p>
                     </div>
-                    <div className="flex items-center justify-center gap-4 text-sm">
+                    <div className="flex items-center justify-center gap-2 md:gap-4 text-xs md:text-sm">
                       <div className="flex items-center gap-1">
-                        <Users size={16} className="text-green-400" />
+                        <Users size={12} className="md:w-4 md:h-4 text-green-400" />
                         <span className="text-green-400 font-bold">{viewingNow[product.id]} viewing now</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <TrendingUp size={16} className="text-orange-400" />
+                        <TrendingUp size={12} className="md:w-4 md:h-4 text-orange-400" />
                         <span className="text-orange-400 font-bold">{soldToday[product.id]} sold today</span>
                       </div>
                     </div>
@@ -382,15 +385,15 @@ const Shop: React.FC = () => {
                   )}
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-gold/30">
-                  <div className="flex items-center justify-center space-x-6 md:space-x-8 text-sm md:text-base">
+                <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gold/30">
+                  <div className="flex items-center justify-center space-x-4 md:space-x-6 lg:space-x-8 text-xs md:text-sm lg:text-base">
                     <div className="flex items-center">
-                      <Shield size={20} className="mr-2 text-green-400" />
-                      <span className="text-green-400 font-bold">Secure Payment</span>
+                      <Shield size={16} className="md:w-5 md:h-5 mr-1 md:mr-2 text-green-400" />
+                      <span className="text-green-400 font-bold">Secure</span>
                     </div>
                     <div className="flex items-center">
-                      <Truck size={20} className="mr-2 text-blue-400" />
-                      <span className="text-blue-400 font-bold">Fast Shipping</span>
+                      <Truck size={16} className="md:w-5 md:h-5 mr-1 md:mr-2 text-blue-400" />
+                      <span className="text-blue-400 font-bold">Fast Ship</span>
                     </div>
                   </div>
                 </div>
