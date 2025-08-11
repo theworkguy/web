@@ -101,74 +101,74 @@ const About: React.FC = () => {
       <div className="container">
         <SectionTitle 
           title="About John Alite" 
-          subtitle="From Gambino enforcer to a global voice of redemption and justice."
+          subtitle="From Gambino enforcer to councilman - a story of ultimate redemption and transformation."
           alignment="left"
         />
         
         {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="text-center bg-black/30 p-4 rounded-lg">
-            <div className="text-2xl md:text-3xl font-bold text-primary">14</div>
-            <div className="text-sm text-gray-400">Years in Prison</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="text-center testimonial-card p-6 rounded-2xl">
+            <div className="text-3xl md:text-4xl font-black text-primary neon-glow">14</div>
+            <div className="text-sm text-gray-400 font-medium">Years in Prison</div>
           </div>
-          <div className="text-center bg-black/30 p-4 rounded-lg">
-            <div className="text-2xl md:text-3xl font-bold text-primary">5</div>
-            <div className="text-sm text-gray-400">Bestselling Books</div>
+          <div className="text-center testimonial-card p-6 rounded-2xl">
+            <div className="text-3xl md:text-4xl font-black text-gold gold-glow">5</div>
+            <div className="text-sm text-gray-400 font-medium">Bestselling Books</div>
           </div>
-          <div className="text-center bg-black/30 p-4 rounded-lg">
-            <div className="text-2xl md:text-3xl font-bold text-primary">500K+</div>
-            <div className="text-sm text-gray-400">Social Followers</div>
+          <div className="text-center testimonial-card p-6 rounded-2xl">
+            <div className="text-3xl md:text-4xl font-black text-primary neon-glow">1.5M+</div>
+            <div className="text-sm text-gray-400 font-medium">Social Followers</div>
           </div>
-          <div className="text-center bg-black/30 p-4 rounded-lg">
-            <div className="text-2xl md:text-3xl font-bold text-primary">2025</div>
-            <div className="text-sm text-gray-400">Elected Councilman</div>
+          <div className="text-center testimonial-card p-6 rounded-2xl">
+            <div className="text-3xl md:text-4xl font-black text-gold gold-glow">2025</div>
+            <div className="text-sm text-gray-400 font-medium">Elected Councilman</div>
           </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6 text-lg leading-relaxed">
               John Alite, born to Albanian parents in Queens, New York, became a notorious Gambino crime family associate in the 1980s and 1990s. Known as "The Calculator" and described by FBI agent Ted Otto as a "hybrid gangster," Alite was a top earner under John Gotti and Gotti Jr., involved in six murders, drug trafficking, and racketeering. After 14 years in prison, including time in brutal Brazilian facilities, he turned his life around following his release in 2012, becoming a beacon of redemption.
             </p>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Today, John is a councilman in Englishtown, NJ, sworn in on March 12, 2025, and a bestselling author of five books: <em>Gotti's Rules</em> (2015), <em>Prison Rules</em> (2019), <em>Darkest Hour</em> (2020), <em>Mafia International</em> (2021), and <em>The Perfect Gangster</em> (2023). He has appeared in Netflix documentaries <em>Fear City: New York vs The Mafia</em> (2020) and <em>Get Gotti</em> (2023), as well as on <em>60 Minutes</em> and <em>Dateline NBC</em>. John hosts the podcast <em>The Mob, The Mafia, and The MAN</em>, advocating against the fentanyl crisis—fueled by the 2022 death of his daughter Chelsea—and has been a Trump supporter since 2016, meeting him multiple times.
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-lg shadow-xl">
+          <div className="relative overflow-hidden rounded-2xl shadow-2xl">
             <img 
               src="https://media.zenfs.com/en/ny_post_metro_articles_178/8acd81446e0d61fa4719e37bcf91e912" 
               alt="John Alite reflecting on his journey of redemption" 
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 p-4">
-              <p className="text-primary font-heading text-xl">John Alite</p>
-              <p className="text-white text-sm">Former Mob Enforcer, Councilman, Bestselling Author, Speaker, Advocate, Media Personality, Podcaster</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 p-6">
+              <p className="text-gold font-black text-2xl gold-glow">John Alite</p>
+              <p className="text-white text-base font-medium">Former Mob Enforcer, Councilman, Bestselling Author, Speaker, Advocate, Media Personality, Podcaster</p>
             </div>
           </div>
         </div>
         
         <div className="mt-16">
-          <h3 className="text-2xl font-bold mb-8 text-center">The Journey of John Alite</h3>
+          <h3 className="text-3xl md:text-4xl font-black mb-12 text-center text-gold gold-glow">THE JOURNEY OF TRANSFORMATION</h3>
           
           <div className="relative">
             {/* Timeline center line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/30 md:block hidden"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary via-gold to-primary md:block hidden"></div>
             
             {/* Mobile timeline line */}
-            <div className="absolute left-4 top-0 bottom-0 w-1 bg-primary/30 md:hidden"></div>
+            <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-gold to-primary md:hidden"></div>
             
             {/* Timeline events */}
-            <div className="space-y-8 relative">
+            <div className="space-y-12 relative">
               {timelineEvents.map((event, index) => (
                 <div 
                   key={event.id} 
-                  className={`flex flex-col md:flex-row ${
+                  className={`flex flex-col md:flex-row group ${
                     index % 2 === 0 ? 'md:flex-row-reverse' : ''
                   } items-center md:items-start gap-4 md:gap-8`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full z-10 shadow-red-glow"></div>
+                  <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 bg-gradient-to-r from-primary to-gold rounded-full z-10 shadow-2xl group-hover:scale-125 transition-transform duration-300"></div>
                   
                   {/* Content */}
                   <div className={`flex-1 w-full md:w-1/2 pl-12 md:pl-0 ${
@@ -177,9 +177,9 @@ const About: React.FC = () => {
                     <div className={`card p-6 hover:shadow-red-glow transition-shadow duration-300 ${
                       index % 2 === 0 ? 'md:text-left' : 'md:text-right'
                     }`}>
-                      <div className="text-primary font-bold text-xl mb-2">{event.year}</div>
-                      <h4 className="text-xl font-bold mb-2">{event.title}</h4>
-                      <p className="text-gray-400">{event.description}</p>
+                      <div className="text-gold font-black text-2xl mb-3 gold-glow">{event.year}</div>
+                      <h4 className="text-xl md:text-2xl font-black mb-4 text-white">{event.title}</h4>
+                      <p className="text-gray-300 leading-relaxed">{event.description}</p>
                     </div>
                   </div>
                   

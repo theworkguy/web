@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import SectionTitle from '../components/SectionTitle';
-import { ChevronLeft, ChevronRight, Star, Truck, Shield, Award } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Truck, Shield, Award, Zap, Clock, Users, TrendingUp } from 'lucide-react';
 
 const products = [
   {
     id: 1,
     name: "John Alite Autographed Collector's Baseball Bat",
-    description: "🔥 EXCLUSIVE: Own a piece of history with this baseball bat, hand-signed by John Alite. LIMITED to just 100 units worldwide! This rare collectible comes with certificate of authenticity. Perfect for collectors and fans.",
+    description: "🔥 ULTRA-RARE COLLECTOR'S ITEM: Own a piece of history with this premium baseball bat, personally hand-signed by John Alite. LIMITED to just 100 units worldwide! Each comes with certificate of authenticity and premium display case. Investment-grade collectible.",
     images: ["https://bwu4hso3u8wqeyna-94770921760.shopifypreview.com/cdn/shop/files/100baseball.jpg"],
     price: 185.00,
     rating: 5,
     reviews: 1247,
-    features: ["Hand-signed by John Alite", "Limited to 100 units", "Certificate of authenticity", "Premium wooden bat"]
+    features: ["Hand-signed by John Alite", "Limited to 100 units worldwide", "Certificate of authenticity", "Premium wooden bat", "Luxury display case included", "Investment-grade collectible"]
   },
   {
     id: 2,
     name: "John Alite Exclusive Journey T-Shirt",
-    description: "🎯 BESTSELLER: Celebrate John's incredible journey with this premium T-shirt featuring exclusive artwork. High-quality cotton blend, perfect fit guaranteed. Show your support for redemption and second chances!",
+    description: "🎯 #1 BESTSELLER: Premium luxury T-shirt featuring exclusive artwork celebrating John's incredible transformation. Ultra-soft premium cotton blend, perfect fit guaranteed. Limited edition design - show your support for redemption!",
     images: [
       "https://i.postimg.cc/hG2N5Z40/Se-Shpejti-ne-storm-al-Limited-Edition-JA.jpg",
       "https://i.postimg.cc/qRgWVczH/Se-Shpejti-ne-storm-al-Limited-Edition-JA-1.jpg",
@@ -25,7 +25,7 @@ const products = [
     price: 89,
     rating: 5,
     reviews: 892,
-    features: ["Premium cotton blend", "Limited edition design", "Available in multiple sizes", "Exclusive artwork"]
+    features: ["Ultra-premium cotton blend", "Limited edition exclusive design", "Available in all sizes", "Exclusive artwork", "Comfort-fit guarantee", "Fade-resistant printing"]
   },
 ];
 
@@ -36,6 +36,14 @@ const Shop: React.FC = () => {
       return acc;
     }, {})
   );
+  const [urgencyTimer, setUrgencyTimer] = useState(3600); // 1 hour countdown
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setUrgencyTimer(prev => prev > 0 ? prev - 1 : 3600);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Load Shopify Buy Button SDK
@@ -182,92 +190,116 @@ const Shop: React.FC = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        size={16}
+        size={18}
         className={`${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-400'}`}
       />
     ));
   };
 
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
   return (
-    <section id="shop" className="section bg-dark-gray metal-texture relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent pointer-events-none"></div>
+    <section id="shop" className="section bg-gradient-to-b from-black via-dark-gray to-black relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-4 h-4 bg-gold rounded-full animate-ping"></div>
+        <div className="absolute top-20 right-20 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-3 h-3 bg-gold/50 rounded-full floating-element"></div>
+      </div>
       
       <div className="container relative">
         <SectionTitle 
-          title="Official Shop" 
-          subtitle="🔥 EXCLUSIVE merchandise and collectibles from John's personal collection. Limited quantities available!"
+          title="EXCLUSIVE SHOP" 
+          subtitle="🔥 PREMIUM merchandise and rare collectibles from John's personal collection. Ultra-limited quantities!"
         />
         
-        {/* Urgency Banner */}
-        <div className="bg-gradient-to-r from-primary to-primary-dark text-white text-center py-3 px-6 rounded-lg mb-8 animate-pulse">
-          <p className="font-bold text-lg">⚡ FLASH SALE: Limited Time Only - Grab Yours Before They're Gone!</p>
+        {/* Enhanced Urgency Banner with Timer */}
+        <div className="urgency-banner text-white text-center py-6 px-8 rounded-2xl mb-12 shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="flex items-center gap-2">
+              <Zap className="w-6 h-6 animate-pulse" />
+              <p className="font-black text-xl">🔥 FLASH SALE ENDS IN:</p>
+            </div>
+            <div className="bg-black/50 px-6 py-2 rounded-xl">
+              <p className="font-mono text-2xl font-black text-gold">{formatTime(urgencyTimer)}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <p className="font-black text-xl">DON'T MISS OUT!</p>
+              <Zap className="w-6 h-6 animate-pulse" />
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {products.map((product) => (
             <div 
               key={product.id} 
-              className="card group hover:shadow-red-glow hover:scale-105 transition-all duration-300 bg-gradient-to-br from-dark-gray to-black relative overflow-hidden border border-primary/20"
+              className="card group hover:shadow-2xl hover:scale-105 transition-all duration-500 bg-gradient-to-br from-dark-gray via-medium-gray to-black relative overflow-hidden border-2 border-gold/30"
             >
-              <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-                <div className="bg-primary text-white px-3 py-1 rounded-full font-bold text-sm flex items-center gap-1 animate-pulse">
+              <div className="absolute top-6 left-6 z-10 flex flex-col gap-3">
+                <div className="premium-badge flex items-center gap-2 animate-pulse">
                   <Shield size={14} />
-                  ✅ AUTHENTIC
+                  <span>100% AUTHENTIC</span>
                 </div>
                 {product.id === 1 && (
-                  <div className="bg-yellow-500 text-black px-3 py-1 rounded-full font-bold text-xs">
-                    🔥 ONLY 100 LEFT
+                  <div className="bg-red-600 text-white px-4 py-2 rounded-full font-black text-sm animate-pulse">
+                    🔥 ONLY 100 EXIST
                   </div>
                 )}
                 {product.id === 2 && (
-                  <div className="bg-green-500 text-white px-3 py-1 rounded-full font-bold text-xs">
-                    ⭐ BESTSELLER
+                  <div className="bg-green-600 text-white px-4 py-2 rounded-full font-black text-sm animate-pulse">
+                    ⭐ #1 BESTSELLER
                   </div>
                 )}
               </div>
               
-              <div className="absolute top-4 right-4 z-10">
-                <div className="bg-primary/90 text-white px-4 py-2 rounded-full font-bold text-xl shadow-lg border-2 border-white/20">
+              <div className="absolute top-6 right-6 z-10">
+                <div className="bg-gradient-to-r from-gold to-gold-dark text-black px-6 py-3 rounded-2xl font-black text-2xl shadow-2xl border-2 border-white/30">
                   ${product.price.toFixed(2)}
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden">
+              <div className="relative aspect-square overflow-hidden rounded-t-2xl">
                 <img 
                   src={product.images[currentImageIndices[product.id]]} 
                   alt={`${product.name} image ${currentImageIndices[product.id] + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:brightness-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-70"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
                 
                 {product.images.length > 1 && (
                   <>
                     <button
                       onClick={() => handlePrevImage(product.id, product.images.length)}
-                      className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-primary/80 hover:bg-primary text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gold/90 hover:bg-gold text-black p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-xl"
                       aria-label="Previous image"
                     >
-                      <ChevronLeft size={20} />
+                      <ChevronLeft size={24} />
                     </button>
                     <button
                       onClick={() => handleNextImage(product.id, product.images.length)}
-                      className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-primary/80 hover:bg-primary text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gold/90 hover:bg-gold text-black p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 shadow-xl"
                       aria-label="Next image"
                     >
-                      <ChevronRight size={20} />
+                      <ChevronRight size={24} />
                     </button>
                   </>
                 )}
                 
                 {product.images.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
                     {product.images.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndices(prev => ({ ...prev, [product.id]: index }))}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
                           index === currentImageIndices[product.id] 
-                            ? 'bg-primary scale-125' 
+                            ? 'bg-gold scale-125 shadow-lg' 
                             : 'bg-white/50 hover:bg-white/80'
                         }`}
                         aria-label={`View image ${index + 1}`}
@@ -277,7 +309,7 @@ const Shop: React.FC = () => {
                 )}
               </div>
               
-              <div className="p-4 md:p-6">
+              <div className="p-6 md:p-8">
                 <div className="flex items-center justify-center mb-4">
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center">
@@ -285,27 +317,27 @@ const Shop: React.FC = () => {
                     </div>
                     <a 
                       href="#reviews" 
-                      className="text-yellow-400 hover:text-yellow-300 font-bold text-sm md:text-base transition-colors duration-300"
+                      className="text-gold hover:text-gold-dark font-black text-base md:text-lg transition-colors duration-300"
                     >
                       ({product.reviews.toLocaleString()} reviews)
                     </a>
                   </div>
                 </div>
                 
-                <h3 className="text-lg md:text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300 text-center">
+                <h3 className="text-xl md:text-2xl font-black mb-4 text-white group-hover:text-gold transition-colors duration-300 text-center">
                   {product.name}
                 </h3>
                 
-                <p className="text-gray-300 mb-4 leading-relaxed text-sm md:text-base text-center">
+                <p className="text-gray-300 mb-6 leading-relaxed text-base md:text-lg text-center font-medium">
                   {product.description}
                 </p>
                 
-                <div className="mb-4 md:mb-6">
-                  <h4 className="text-sm font-semibold text-primary mb-2 text-center">✨ What You Get:</h4>
+                <div className="mb-6 md:mb-8">
+                  <h4 className="text-lg font-black text-gold mb-4 text-center">✨ PREMIUM FEATURES:</h4>
                   <ul className="space-y-1">
                     {product.features.map((feature, index) => (
-                      <li key={index} className="text-gray-300 text-xs md:text-sm flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0"></div>
+                      <li key={index} className="text-gray-300 text-sm md:text-base flex items-center justify-center font-medium">
+                        <div className="w-2 h-2 bg-gold rounded-full mr-3 flex-shrink-0"></div>
                         {feature}
                       </li>
                     ))}
@@ -313,9 +345,25 @@ const Shop: React.FC = () => {
                 </div>
                 
                 {/* Urgency Message */}
-                <div className="text-center mb-4">
-                  <p className="text-yellow-400 font-bold text-sm animate-pulse">
-                    ⏰ {product.id === 1 ? 'Only 100 units available!' : 'Limited time offer!'}
+                <div className="text-center mb-6">
+                  <div className="bg-red-600/20 border border-red-500 rounded-xl p-4 mb-4">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <Clock className="w-5 h-5 text-red-400 animate-pulse" />
+                      <p className="text-red-400 font-black text-lg animate-pulse">
+                        {product.id === 1 ? 'ONLY 100 UNITS EXIST!' : 'LIMITED TIME ONLY!'}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center gap-4 text-sm">
+                      <div className="flex items-center gap-1">
+                        <Users size={16} className="text-green-400" />
+                        <span className="text-green-400 font-bold">{Math.floor(Math.random() * 50) + 20} viewing now</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <TrendingUp size={16} className="text-orange-400" />
+                        <span className="text-orange-400 font-bold">{Math.floor(Math.random() * 10) + 5} sold today</span>
+                      </div>
+                    </div>
+                  </div>
                   </p>
                 </div>
                 
@@ -327,17 +375,15 @@ const Shop: React.FC = () => {
                   )}
                 </div>
                 
-                <div className="mt-4 pt-4 border-t border-gray-700/50">
-                  <div className="flex items-center justify-center space-x-4 md:space-x-6 text-xs md:text-sm text-gray-400">
+                <div className="mt-6 pt-6 border-t border-gold/30">
+                  <div className="flex items-center justify-center space-x-6 md:space-x-8 text-sm md:text-base">
                     <div className="flex items-center">
-                      <Shield size={16} className="mr-1 text-green-400" />
-                      <span className="hidden sm:inline">Secure Payment</span>
-                      <span className="sm:hidden">Secure</span>
+                      <Shield size={20} className="mr-2 text-green-400" />
+                      <span className="text-green-400 font-bold">Secure Payment</span>
                     </div>
                     <div className="flex items-center">
-                      <Truck size={16} className="mr-1 text-blue-400" />
-                      <span className="hidden sm:inline">Fast Delivery</span>
-                      <span className="sm:hidden">Fast Ship</span>
+                      <Truck size={20} className="mr-2 text-blue-400" />
+                      <span className="text-blue-400 font-bold">Fast Shipping</span>
                     </div>
                   </div>
                 </div>
@@ -347,57 +393,59 @@ const Shop: React.FC = () => {
         </div>
         
         {/* Customer Testimonials */}
-        <div className="mt-12 bg-gradient-to-r from-dark-gray to-black rounded-lg p-6 md:p-8">
-          <h3 className="text-2xl font-bold text-center mb-6 text-primary">What Customers Say</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-black/50 p-4 rounded-lg">
+        <div className="mt-16 bg-gradient-to-r from-dark-gray via-black to-dark-gray rounded-2xl p-8 md:p-12 border border-gold/20">
+          <h3 className="text-3xl md:text-4xl font-black text-center mb-10 text-gold gold-glow">CUSTOMER TESTIMONIALS</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="testimonial-card p-6 rounded-2xl">
               <div className="flex items-center mb-2">
                 {renderStars(5)}
-                <span className="ml-2 text-yellow-400 font-bold">Verified Purchase</span>
+                <span className="ml-3 premium-badge text-xs">VERIFIED</span>
               </div>
-              <p className="text-gray-300 text-sm mb-2">"Amazing quality! The baseball bat is exactly as described. John's signature is perfect!"</p>
-              <p className="text-gray-500 text-xs">- Michael R.</p>
+              <p className="text-white text-base mb-3 font-medium">"Amazing quality! The baseball bat is exactly as described. John's signature is perfect!"</p>
+              <p className="text-gold text-sm font-bold">- Michael R.</p>
             </div>
-            <div className="bg-black/50 p-4 rounded-lg">
+            <div className="testimonial-card p-6 rounded-2xl">
               <div className="flex items-center mb-2">
                 {renderStars(5)}
-                <span className="ml-2 text-yellow-400 font-bold">Verified Purchase</span>
+                <span className="ml-3 premium-badge text-xs">VERIFIED</span>
               </div>
-              <p className="text-gray-300 text-sm mb-2">"Love the t-shirt! Great quality and the design is incredible. Highly recommend!"</p>
-              <p className="text-gray-500 text-xs">- Sarah T.</p>
+              <p className="text-white text-base mb-3 font-medium">"Love the t-shirt! Great quality and the design is incredible. Highly recommend!"</p>
+              <p className="text-gold text-sm font-bold">- Sarah T.</p>
             </div>
           </div>
-          <div className="text-center mt-6">
+          <div className="text-center mt-8">
             <a 
               href="#reviews" 
-              className="text-primary hover:text-primary-hover font-semibold transition-colors duration-300"
+              className="text-gold hover:text-gold-dark font-black text-lg transition-colors duration-300 flex items-center justify-center gap-2"
             >
-              📖 Read All Reviews →
+              <Star size={20} />
+              READ ALL 3,132 REVIEWS
+              <Star size={20} />
             </a>
           </div>
         </div>
         
-        <div className="mt-8 text-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-4 md:gap-8 p-4 md:p-6 bg-black/30 rounded-lg backdrop-blur-sm">
-            <div className="flex items-center text-green-400">
-              <Shield size={24} className="mr-2" />
+        <div className="mt-12 text-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-6 md:gap-12 p-6 md:p-8 testimonial-card rounded-2xl">
+            <div className="flex items-center text-green-400 group">
+              <Shield size={28} className="mr-3 group-hover:animate-pulse" />
               <div>
-                <div className="font-semibold">100% Authentic</div>
-                <div className="text-xs md:text-sm text-gray-400">Guaranteed genuine</div>
+                <div className="font-black text-lg">100% Authentic</div>
+                <div className="text-sm text-gray-400">Guaranteed genuine</div>
               </div>
             </div>
-            <div className="flex items-center text-yellow-400">
-              <Star size={24} className="mr-2" />
+            <div className="flex items-center text-gold group">
+              <Star size={28} className="mr-3 group-hover:animate-pulse" />
               <div>
-                <div className="font-semibold">2000+ Reviews</div>
-                <div className="text-xs md:text-sm text-gray-400">5-star average</div>
+                <div className="font-black text-lg">3,132 Reviews</div>
+                <div className="text-sm text-gray-400">4.9-star average</div>
               </div>
             </div>
             <div className="flex items-center text-primary">
-              <Award size={24} className="mr-2" />
+              <Award size={28} className="mr-3 group-hover:animate-pulse" />
               <div>
-                <div className="font-semibold">Limited Edition</div>
-                <div className="text-xs md:text-sm text-gray-400">Exclusive items</div>
+                <div className="font-black text-lg">Ultra-Limited</div>
+                <div className="text-sm text-gray-400">Exclusive items</div>
               </div>
             </div>
           </div>

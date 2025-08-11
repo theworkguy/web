@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -14,15 +15,24 @@
     --primary: #c10101;
     --primary-hover: #e00000;
     --primary-dark: #8a0101;
+    --gold: #FFD700;
+    --gold-dark: #B8860B;
+    --silver: #C0C0C0;
+    --bronze: #CD7F32;
   }
   
   body {
-    @apply bg-black text-gray-100 font-body;
+    @apply bg-black text-gray-100;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--black);
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(193, 1, 1, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
+    font-family: 'Playfair Display', serif;
+    @apply font-bold;
   }
 
   h1 {
@@ -48,7 +58,7 @@
 
 @layer components {
   .container {
-    @apply px-4 md:px-8 mx-auto max-w-7xl;
+    @apply px-4 md:px-8 mx-auto max-w-8xl;
   }
   
   .section {
@@ -60,30 +70,72 @@
   }
   
   .btn {
-    @apply inline-block py-3 px-6 rounded text-center font-semibold transition-all duration-300 shadow-lg relative overflow-hidden;
+    @apply inline-block py-4 px-8 rounded-xl text-center font-bold transition-all duration-500 shadow-2xl relative overflow-hidden transform hover:scale-105;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
   
   .btn-primary {
-    @apply bg-primary hover:bg-primary-hover text-white;
-    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-    box-shadow: 0 0 15px rgba(193, 1, 1, 0.3);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 50%, var(--primary) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    @apply text-white;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    box-shadow: 
+      0 0 30px rgba(193, 1, 1, 0.5),
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 50%, var(--gold) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    @apply text-black;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.5),
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
   .btn-outline {
-    @apply border-2 border-primary hover:bg-primary/10 text-primary;
+    @apply border-3 border-primary hover:bg-primary/20 text-primary;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(193, 1, 1, 0.3);
   }
 
   .card {
-    @apply bg-dark-gray rounded-lg shadow-xl overflow-hidden transition-all duration-300;
+    @apply bg-gradient-to-br from-dark-gray via-medium-gray to-dark-gray rounded-2xl shadow-2xl overflow-hidden transition-all duration-500 border border-gray-700/30;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   
   .form-input {
-    @apply w-full p-3 rounded bg-medium-gray border border-light-gray/30 text-off-white 
-           focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary;
+    @apply w-full p-4 rounded-xl bg-gradient-to-r from-medium-gray to-dark-gray border-2 border-light-gray/30 text-off-white 
+           focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300;
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
   .neon-glow {
-    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.5);
+    text-shadow: 
+      0 0 5px rgba(255, 0, 0, 0.8),
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 20px rgba(255, 0, 0, 0.4),
+      0 0 40px rgba(255, 0, 0, 0.2);
+  }
+
+  .gold-glow {
+    text-shadow: 
+      0 0 5px rgba(255, 215, 0, 0.8),
+      0 0 10px rgba(255, 215, 0, 0.6),
+      0 0 20px rgba(255, 215, 0, 0.4),
+      0 0 40px rgba(255, 215, 0, 0.2);
   }
 
   .red-gradient {
@@ -127,6 +179,34 @@
     box-shadow: 0 0 15px rgba(193, 1, 1, 0.3);
   }
 
+  .premium-badge {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    @apply text-black font-black text-xs px-3 py-1 rounded-full;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    animation: pulse 2s infinite;
+  }
+
+  .urgency-banner {
+    background: linear-gradient(90deg, 
+      var(--primary) 0%, 
+      var(--primary-hover) 25%, 
+      var(--primary) 50%, 
+      var(--primary-hover) 75%, 
+      var(--primary) 100%);
+    background-size: 200% 100%;
+    animation: urgencyPulse 2s linear infinite;
+  }
+
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .testimonial-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   /* Mobile optimizations */
   @media (max-width: 768px) {
     .container {
@@ -151,5 +231,31 @@
     .animate-bounce-slow {
       animation: bounce 2s infinite;
     }
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes urgencyPulse {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 }
