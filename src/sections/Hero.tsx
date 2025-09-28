@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import { ChevronDown, Star, Users, Award, TrendingUp, Shield, Zap } from 'lucide-react';
+import { ChevronDown, Star, Users, Award, TrendingUp } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,14 +28,6 @@ const Hero: React.FC = () => {
         transform: `translateY(${scrollY * 0.3}px)`,
       }}
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full animate-ping"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-gold rounded-full animate-pulse"></div>
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-primary/50 rounded-full floating-element"></div>
-        <div className="absolute bottom-20 right-10 w-2 h-2 bg-gold/50 rounded-full floating-element" style={{ animationDelay: '2s' }}></div>
-      </div>
-
       <div 
         className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 backdrop-blur-sm"
         style={{ opacity: scrollY / 1000 }}
@@ -55,7 +36,7 @@ const Hero: React.FC = () => {
       <div className="container px-4 z-10 text-center">
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 md:mb-6 tracking-tight text-white leading-tight">
           <span className="block mb-1 md:mb-2 shimmer bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">JOHN</span> 
-          <span className="text-primary neon-glow animate-pulse-slow text-5xl sm:text-6xl md:text-8xl lg:text-9xl">ALITE</span>
+          <span className="text-primary neon-glow text-5xl sm:text-6xl md:text-8xl lg:text-9xl">ALITE</span>
         </h1>
         
         <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-200 max-w-4xl mx-auto leading-tight px-2">
@@ -63,26 +44,26 @@ const Hero: React.FC = () => {
         </p>
 
         <p className="text-base sm:text-lg md:text-2xl lg:text-3xl italic text-gold gold-glow mb-6 md:mb-8 max-w-3xl mx-auto font-light px-2">
-          "I turned my past into a purpose"
+          "Turning my past into purpose"
         </p>
 
-        {/* Social Proof Stats */}
+        {/* Authentic Social Proof Stats */}
         <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-3 md:gap-6 mb-8 md:mb-10 text-xs sm:text-sm md:text-base px-2">
           <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
-            <Users className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-gold" />
-            <span className="text-white font-bold text-xs sm:text-sm md:text-base">1.5M+ Followers</span>
-          </div>
-          <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
             <Award className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-gold" />
-            <span className="text-white font-bold text-xs sm:text-sm md:text-base">5 Bestselling Books</span>
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">5 Published Books</span>
           </div>
           <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
             <Star className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-yellow-400" />
-            <span className="text-white font-bold text-xs sm:text-sm md:text-base">Featured on Netflix</span>
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">Netflix Featured</span>
           </div>
           <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
             <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-green-400" />
-            <span className="text-white font-bold text-xs sm:text-sm md:text-base">3,132 Reviews</span>
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">Elected Councilman</span>
+          </div>
+          <div className="flex items-center testimonial-card px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full">
+            <Users className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 md:mr-2 text-blue-400" />
+            <span className="text-white font-bold text-xs sm:text-sm md:text-base">Youth Advocate</span>
           </div>
         </div>
 
@@ -93,16 +74,16 @@ const Hero: React.FC = () => {
             aria-label="Book John Alite for an event"
           >
             <span className="relative z-10 font-black flex items-center gap-2">
-              BOOK ME NOW
+              BOOK SPEAKING EVENT
             </span>
           </Button>
           <Button 
             href="#shop" 
             className="btn-primary w-full sm:w-auto sm:min-w-[200px] md:min-w-[250px] text-lg md:text-xl px-6 md:px-10 py-4 md:py-5 shadow-2xl"
-            aria-label="Shop exclusive merchandise"
+            aria-label="Shop official merchandise"
           >
             <span className="font-black">
-              SHOP NOW
+              OFFICIAL MERCHANDISE
             </span>
           </Button>
         </div>
@@ -110,10 +91,10 @@ const Hero: React.FC = () => {
         {/* Trust Indicators */}
         <div className="mt-12 text-center">
           <p className="text-gold font-bold text-sm sm:text-base md:text-lg lg:text-xl mb-4 px-2">
-            ✅ 100% Authentic • 🚚 Fast Shipping • 🔒 Secure Checkout
+            ✅ Authentic Story • 📚 Published Author • 🎯 Professional Speaker
           </p>
           <p className="text-gray-400 text-xs sm:text-sm px-2">
-            Join thousands of satisfied customers worldwide
+            Supporting youth advocacy and criminal justice reform
           </p>
         </div>
       </div>
@@ -121,7 +102,7 @@ const Hero: React.FC = () => {
       <a 
         href="#shop"
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gold hover:text-primary transition-colors duration-300 animate-bounce"
-        aria-label="Scroll down to shop"
+        aria-label="Scroll down to learn more"
       >
         <ChevronDown size={40} />
       </a>

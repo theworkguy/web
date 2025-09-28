@@ -116,12 +116,12 @@ const About: React.FC = () => {
             <div className="text-sm text-gray-400 font-medium">Bestselling Books</div>
           </div>
           <div className="text-center testimonial-card p-6 rounded-2xl">
-            <div className="text-3xl md:text-4xl font-black text-primary neon-glow">1.5M+</div>
-            <div className="text-sm text-gray-400 font-medium">Social Followers</div>
+            <div className="text-3xl md:text-4xl font-black text-primary neon-glow">2025</div>
+            <div className="text-sm text-gray-400 font-medium">Elected Councilman</div>
           </div>
           <div className="text-center testimonial-card p-6 rounded-2xl">
-            <div className="text-3xl md:text-4xl font-black text-gold gold-glow">2025</div>
-            <div className="text-sm text-gray-400 font-medium">Elected Councilman</div>
+            <div className="text-3xl md:text-4xl font-black text-gold gold-glow">Netflix</div>
+            <div className="text-sm text-gray-400 font-medium">Featured</div>
           </div>
         </div>
         

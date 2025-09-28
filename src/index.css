@@ -194,7 +194,6 @@
       var(--primary-hover) 75%, 
       var(--primary) 100%);
     background-size: 200% 100%;
-    animation: urgencyPulse 2s linear infinite;
   }
 
   .floating-element {
@@ -271,11 +270,6 @@
   @keyframes gradientShift {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
-  }
-
-  @keyframes urgencyPulse {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
   }
 
   @keyframes float {
